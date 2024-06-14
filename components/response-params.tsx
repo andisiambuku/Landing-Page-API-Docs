@@ -14,7 +14,7 @@ interface ResponseParamsProps {
 
 const ResponseParams: React.FC<ResponseParamsProps> = ({ headerOne, headerTwo, rows }) => {
   return (
-    <Table>
+    <Table className='my-4'>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[200px]">{headerOne}</TableHead>
