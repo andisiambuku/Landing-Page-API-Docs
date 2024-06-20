@@ -6,7 +6,7 @@ export default async function UnsplashApi() {
     // const data = await getRandomPhoto()
     // console.log(data)
     return(
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen mt-10 flex-col items-center justify-between p-24">
         Unsplash Page
         
     </main>

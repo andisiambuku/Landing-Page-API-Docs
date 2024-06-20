@@ -1,33 +1,30 @@
-"use client"
+'use client'
 import React, { useState } from 'react';
 import {
   Menubar,
   MenubarContent,
   MenubarItem,
   MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetClose } from "@/components/ui/sheet"; // Assuming you have a sheet component
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetClose } from "@/components/ui/sheet";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <div className="md:hidden">
+      <div className="relative md:hidden">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <button className="p-2 text-gray-500">☰</button>
+            <button className="absolute right-2 p-2 text-gray-500">☰</button>
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>
               <SheetClose asChild>
                 <button className="absolute top-2 right-2"></button>
               </SheetClose>
-              <div className="mt-4 flex flex-row">
-                <Menubar>
+                <Menubar className="flex flex-col ">
                   <MenubarMenu>
                     <MenubarTrigger>About</MenubarTrigger>
                     <MenubarContent>
@@ -57,16 +54,16 @@ export default function Header() {
                         Demo
                       </MenubarItem>
                     </MenubarContent>
+                    
                   </MenubarMenu>
                 </Menubar>
-              </div>
             </SheetHeader>
           </SheetContent>
         </Sheet>
       </div>
 
-      <div className="hidden md:flex">
-        <Menubar>
+      <div className="relative hidden md:flex">
+        <Menubar className='absolute right-2'>
           <MenubarMenu>
             <MenubarTrigger>About</MenubarTrigger>
             <MenubarContent>

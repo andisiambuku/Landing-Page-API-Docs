@@ -74,7 +74,7 @@ export default function Footer() {
                         API Docs
                     </h6>
                     <p>
-                        Add CTA
+                        Learn all about GraphQL and REST APIs
                     </p>
                 </div>
 

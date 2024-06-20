@@ -2,75 +2,75 @@ import ResponseParams from "@/components/response-params";
 import ResponseSection from "@/components/response-section";
 
 const linkRel = [
-    { contentOne: 'self', contentTwo: 'API location of this photo' },
-    { contentOne: 'html', contentTwo: 'HTML location of this photo' },
-    { contentOne: 'download', contentTwo: 'Download location of this photo' },
+  { contentOne: 'self', contentTwo: 'API location of this photo' },
+  { contentOne: 'html', contentTwo: 'HTML location of this photo' },
+  { contentOne: 'download', contentTwo: 'Download location of this photo' },
 ];
 
 const listPhotos = [
-    { contentOne: 'page', contentTwo: 'Page number to retrieve. (Optional; default: 1)' },
-    { contentOne: 'per_page', contentTwo: 'Number of items per page. (Optional; default: 10)' },
-    { contentOne: 'order_by', contentTwo: 'How to sort the photos. Optional. (Valid values; latest, oldest, popular; dafault: latest)' },
+  { contentOne: 'page', contentTwo: 'Page number to retrieve. (Optional; default: 1)' },
+  { contentOne: 'per_page', contentTwo: 'Number of items per page. (Optional; default: 10)' },
+  { contentOne: 'order_by', contentTwo: 'How to sort the photos. Optional. (Valid values; latest, oldest, popular; dafault: latest)' },
 ];
 
 const getPhoto = [
-    { contentOne: 'id', contentTwo: 'The ID of the photo. Required' },
+  { contentOne: 'id', contentTwo: 'The ID of the photo. Required' },
 ];
 
 const getRandomPhoto = [
-    { contentOne: 'collections', contentTwo: 'Public collection ID to filter selection. If multiple, comma-separated' },
-    { contentOne: 'topics', contentTwo: 'Public topic ID to filter selection. If multiple, comma-separated' },
-    { contentOne: 'username', contentTwo: 'Limit selection to single user' },
-    { contentOne: 'query', contentTwo: 'Limit selection to photos matching a search term' },
-    { contentOne: 'orientation', contentTwo: 'Filter by photo orientation.(Valid values: landscape, portait, squarish)' },
-    { contentOne: 'content_filter', contentTwo: 'Limit results by content safety. Default: low. Valid values are low and high' },
-    { contentOne: 'count', contentTwo: 'The number of photos to return. (Default:1; max:30)' },
+  { contentOne: 'collections', contentTwo: 'Public collection ID to filter selection. If multiple, comma-separated' },
+  { contentOne: 'topics', contentTwo: 'Public topic ID to filter selection. If multiple, comma-separated' },
+  { contentOne: 'username', contentTwo: 'Limit selection to single user' },
+  { contentOne: 'query', contentTwo: 'Limit selection to photos matching a search term' },
+  { contentOne: 'orientation', contentTwo: 'Filter by photo orientation.(Valid values: landscape, portait, squarish)' },
+  { contentOne: 'content_filter', contentTwo: 'Limit results by content safety. Default: low. Valid values are low and high' },
+  { contentOne: 'count', contentTwo: 'The number of photos to return. (Default:1; max:30)' },
 ];
 
 const getPhotoStats = [
-    { contentOne: 'id', contentTwo: 'The public id of the photo. Required.' },
-    { contentOne: 'resolution', contentTwo: 'The frequency of the stats. (Optional; default: "days")' },
-    { contentOne: 'quality', contentTwo: 'The amount of each stat. (Optional; default: 30)' },
+  { contentOne: 'id', contentTwo: 'The public id of the photo. Required.' },
+  { contentOne: 'resolution', contentTwo: 'The frequency of the stats. (Optional; default: "days")' },
+  { contentOne: 'quality', contentTwo: 'The amount of each stat. (Optional; default: 30)' },
 ];
 
 const trackDownload = [
-    { contentOne: 'id', contentTwo: 'The ID of the photo. Required' },
+  { contentOne: 'id', contentTwo: 'The ID of the photo. Required' },
 ];
 
 const updatePhoto = [
-    { contentOne: 'id', contentTwo: 'The ID of the photo. Required' },
-    { contentOne: 'description', contentTwo: 'The description of the photo. (Optional)' },
-    { contentOne: 'show_on_profile', contentTwo: 'The visibility of the photo. (Optional)' },
-    { contentOne: 'tags', contentTwo: 'The tags of the photo. (Optional)' },
-    { contentOne: 'location[latitude]', contentTwo: 'The full location latitude (rounded to 6 dedcimals) of the photo(Optional)' },
-    { contentOne: 'location[longitude]', contentTwo: 'The full location longitude (rounded to 6 dedcimals) of the photo(Optional)' },
-    { contentOne: 'location[name]', contentTwo: 'The full location string of the photo (Optional)' },
-    { contentOne: 'location[city]', contentTwo: 'The  city location of the photo (Optional)' },
-    { contentOne: 'location[country]', contentTwo: 'The country location of the photo. (Optional)' },
-    { contentOne: 'exif[make]', contentTwo: 'The brand of the camera  (Optional)' },
-    { contentOne: 'exif[model]', contentTwo: 'The model of the camera  (Optional)' },
-    { contentOne: 'exif[exposure_time]', contentTwo: 'The exposure time of the camera (Optional)' },
-    { contentOne: 'exif[aperture_value]', contentTwo: 'The aperture value of the camera (Optional)' },
-    { contentOne: 'exif[focal_length]', contentTwo: 'The focal length of the camera  (Optional)' },
-    { contentOne: 'exif[iso_speed_ratings]', contentTwo: 'The iso of the camera (Optional)' },
+  { contentOne: 'id', contentTwo: 'The ID of the photo. Required' },
+  { contentOne: 'description', contentTwo: 'The description of the photo. (Optional)' },
+  { contentOne: 'show_on_profile', contentTwo: 'The visibility of the photo. (Optional)' },
+  { contentOne: 'tags', contentTwo: 'The tags of the photo. (Optional)' },
+  { contentOne: 'location[latitude]', contentTwo: 'The full location latitude (rounded to 6 dedcimals) of the photo(Optional)' },
+  { contentOne: 'location[longitude]', contentTwo: 'The full location longitude (rounded to 6 dedcimals) of the photo(Optional)' },
+  { contentOne: 'location[name]', contentTwo: 'The full location string of the photo (Optional)' },
+  { contentOne: 'location[city]', contentTwo: 'The  city location of the photo (Optional)' },
+  { contentOne: 'location[country]', contentTwo: 'The country location of the photo. (Optional)' },
+  { contentOne: 'exif[make]', contentTwo: 'The brand of the camera  (Optional)' },
+  { contentOne: 'exif[model]', contentTwo: 'The model of the camera  (Optional)' },
+  { contentOne: 'exif[exposure_time]', contentTwo: 'The exposure time of the camera (Optional)' },
+  { contentOne: 'exif[aperture_value]', contentTwo: 'The aperture value of the camera (Optional)' },
+  { contentOne: 'exif[focal_length]', contentTwo: 'The focal length of the camera  (Optional)' },
+  { contentOne: 'exif[iso_speed_ratings]', contentTwo: 'The iso of the camera (Optional)' },
 ];
 
 const likePhoto = [
-    { contentOne: 'id', contentTwo: 'The ID of the photo. Required' },
+  { contentOne: 'id', contentTwo: 'The ID of the photo. Required' },
 ];
 
 const unlikePhoto = [
-    { contentOne: 'id', contentTwo: 'The ID of the photo. Required' },
+  { contentOne: 'id', contentTwo: 'The ID of the photo. Required' },
 ];
 
 
 
 export default function UnsplashDocs() {
-    const listRes = `200 OK
+  const listRes = `200 OK
     Link: <https://api.unsplash.com/photos?page=1>; rel="first", <https://api.unsplash.com/photos?page=1>; rel="prev", <https://api.unsplash.com/photos?page=346>; rel="last", <https://api.unsplash.com/photos?page=3>; rel="next"
     X-Ratelimit-Limit: 1000
     X-Ratelimit-Remaining: 999`;
-    const listResExample = `[
+  const listResExample = `[
   {
     "id": "LBI7cgq3pbM",
     "created_at": "2016-05-03T11:00:28-04:00",
@@ -136,10 +136,10 @@ export default function UnsplashDocs() {
   // ... more photos
 ]
 `;
-    const getRes = `200 OK
+  const getRes = `200 OK
 X-Ratelimit-Limit: 1000
 X-Ratelimit-Remaining: 999`;
-    const getResExample = `{
+  const getResExample = `{
   "id": "Dwu85P9SOIk",
   "created_at": "2016-05-03T11:00:28-04:00",
   "updated_at": "2016-07-10T11:00:01-05:00",
@@ -221,7 +221,7 @@ X-Ratelimit-Remaining: 999`;
 }
 `;
 
-    const randomResExampleNoCount = `{
+  const randomResExampleNoCount = `{
   "id": "Dwu85P9SOIk",
   "created_at": "2016-05-03T11:00:28-04:00",
   "updated_at": "2016-07-10T11:00:01-05:00",
@@ -298,7 +298,7 @@ X-Ratelimit-Remaining: 999`;
   }
 }
 `;
-    const randomResExampleCount =`[
+  const randomResExampleCount = `[
   {
     "id": "Dwu85P9SOIk",
     "created_at": "2016-05-03T11:00:28-04:00",
@@ -378,7 +378,7 @@ X-Ratelimit-Remaining: 999`;
   // ... more photos
 ]`;
 
-    const statsResExample = `{
+  const statsResExample = `{
     "id": "LF8gK8-HGSg",
     "downloads": {
         "total": 49771,
@@ -502,13 +502,13 @@ X-Ratelimit-Remaining: 999`;
     }
 }
 `;
-    const downloadResExample = `{
+  const downloadResExample = `{
   "url": "https://image.unsplash.com/example"
 }`
-    const updateRes = `201 Created
+  const updateRes = `201 Created
 X-Ratelimit-Limit: 1000
 X-Ratelimit-Remaining: 999`
-const updateResExample = `{
+  const updateResExample = `{
   "id": "Dwu85P9SOIk",
   "created_at": "2016-05-03T11:00:28-04:00",
   "updated_at": "2016-07-10T11:00:01-05:00",
@@ -589,7 +589,7 @@ const updateResExample = `{
   }
 }
 `
-const likeResExample = `{
+  const likeResExample = `{
   "photo": {
     "id": "LF8gK8-HGSg",
     "width": 5245,
@@ -625,7 +625,7 @@ const likeResExample = `{
   }
 }`
 
-const unlikeResExample = `{
+  const unlikeResExample = `{
   "photo": {
     "id": "LF8gK8-HGSg",
     "width": 5245,
@@ -661,112 +661,112 @@ const unlikeResExample = `{
   }
 }`
 
-    return (
-        <main className="flex min-h-screen flex-col items-center justify-between mx-auto">
-            <h1 className="text-2xl font-bold">Unsplash Photo Documentation</h1>
-            <div className="flex flex-col">
-                <section className="my-4">
-                    <h2 className="text-xl font-bold">Link relations</h2>
-                    <p className="text-sm py-2">Photos have the following link relations:</p>
-                    <h3 className="text-lg font-bold">Parameters</h3>
-                    <ResponseParams headerOne={"Relation"} headerTwo={"Description"} rows={linkRel} />
-                </section>
-                <section className="my-4">
-                    <h2 className="text-xl font-bold">List photos</h2>
-                    <p className="text-sm py-2">Get a single page from the Editorial feed.</p>
-                    <ResponseSection content="GET /photos" />
-                    <h3 className="text-lg font-bold">Parameters</h3>
-                    <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={listPhotos} />
-                    <h3 className="text-lg font-bold">Response</h3>
-                    <p className="text-sm py-2">The photo objects returned here are abbreviated. For full details use GET /photos/:id</p>
-                    <ResponseSection content={listRes} />
-                    <ResponseSection content={listResExample} />
-                </section>
-                <section className="my-4">
-                    <h2 className="text-xl font-bold">Get a photo</h2>
-                    <p className="text-sm py-2">Retrieve a single photo.</p>
-                    <ResponseSection content="GET /photos/:id"/>
-                    <h3 className="text-lg font-bold">Parameters</h3>
-                    <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getPhoto} />
-                    <h3 className="text-lg font-bold">Response</h3>
-                    <ResponseSection content={getRes} />
-                    <ResponseSection content={getResExample} />
-                </section>
-                <section className="my-4">
-                    <h2 className="text-xl font-bold">Get a random photo</h2>
-                    <p className="text-sm py-2">Retrieve a single random photo, given optional filters.</p>
-                    <ResponseSection content="GET /photos/random"/>
-                    <h3 className="text-lg font-bold">Parameters</h3>
-                    <p className="text-sm py-2">All parameters are optional, and can be combined to narrow the pool of photos from which a random one will be chosen.</p>
-                    <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getRandomPhoto} />
-                    <p className="text-sm py-2">Note: You can’t use the collections or topics filtering with query parameters in the same request</p>
-                    <p className="text-sm py-2">Note: When supplying a count parameter - and only then - the response will be an array of photos, even if the value of count is 1.</p>
-                    <h3 className="text-lg font-bold">Response</h3>
-                    <ResponseSection content={getRes} />
-                    <p className="text-sm py-2">Without the count parameter:</p>
-                    <ResponseSection content={randomResExampleNoCount} />
-                    <p className="text-sm py-2">With the count parameter:</p>
-                    <ResponseSection content={randomResExampleCount} />
-                </section>
-                <section className="my-4">
-                    <h2 className="text-xl font-bold">Get a photos statistics</h2>
-                    <p className="text-sm py-2">Retrieve total number of downloads, views and likes of a single photo, as well as the historical breakdown of these stats in a specific timeframe (default is 30 days).</p>
-                    <ResponseSection content="GET /photos/:id/statistics"/>
-                    <h3 className="text-lg font-bold">Parameters</h3>
-                    <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getPhotoStats} />
-                    <p className="text-sm py-2">Currently, the only resolution param supported is “days”. The quantity param can be any number between 1 and 30.</p>
-                    <h3 className="text-lg font-bold">Response</h3>
-                    <ResponseSection content={getRes} />
-                    <ResponseSection content={downloadResExample} />
-                </section>
-                <section className="my-4">
-                    <h2 className="text-xl font-bold">Track a photo download</h2>
-                    <p className="text-sm py-2">To abide by the API guidelines, you need to trigger a GET request to this endpoint every time your application performs a download of a photo. To understand what constitutes a download, please refer to the ‘Triggering a download’ guideline.</p>
-                    <p className="text-sm py-2">This is purely an event endpoint used to increment the number of downloads a photo has. You can think of it very similarly to the pageview event in Google Analytics—where you’re incrementing a counter on the backend. This endpoint is not to be used to embed the photo (use the photo.urls.* properties instead) or to direct the user to the downloaded photo (use the photo.urls.full instead), it is for tracking purposes only.</p>
-                    <p className="text-sm py-2">Note: This is different than the concept of a view, which is tracked automatically when you hotlink an image</p>
-                    <ResponseSection content="GET /photos/:id/download"/>
-                    <h3 className="text-lg font-bold">Parameters</h3>
-                    <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={trackDownload} />
-                    <h3 className="text-lg font-bold">Response</h3>
-                    <ResponseSection content={getRes} />
-                    <ResponseSection content={statsResExample} />
-                </section>
-                <section className="my-4">
-                    <h2 className="text-xl font-bold">Update a photo</h2>
-                    <p className="text-sm py-2">Update a photo on behalf of the logged-in user. This requires the write_photos scope.</p>
-                    <ResponseSection content="PUT /photos/:id"/>
-                    <h3 className="text-lg font-bold">Parameters</h3>
-                    <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={updatePhoto} />
-                    <h3 className="text-lg font-bold">Response</h3>
-                    <p className="text-sm py-2">Responds with the uploaded photo:</p>
-                    <ResponseSection content={updateRes} />
-                    <ResponseSection content={updateResExample} />
-                </section>
-                <section className="my-4">
-                    <h2 className="text-xl font-bold">Like a photo</h2>
-                    <p className="text-sm py-2">Like a photo on behalf of the logged-in user. This requires the write_likes scope.</p>
-                    <p className="text-sm py-2">Note: This action is idempotent; sending the POST request to a single photo multiple times has no additional effect.</p>
-                    <ResponseSection content="POST /photos/:id/like"/>
-                    <h3 className="text-lg font-bold">Parameters</h3>
-                    <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={likePhoto} />
-                    <h3 className="text-lg font-bold">Response</h3>
-                    <p className="text-sm py-2">Responds with the abbreviated versions of the user and the liked photo.</p>
-                    <ResponseSection content={updateRes} />
-                    <ResponseSection content={likeResExample} />
-                </section>
-                <section className="my-4">
-                    <h2 className="text-xl font-bold">Unlike a photo</h2>
-                    <p className="text-sm py-2">Remove a user’s like of a photo.</p>
-                    <p className="text-sm py-2">Note: This action is idempotent; sending the DELETE request to a single photo multiple times has no additional effect.</p>
-                    <ResponseSection content="DELETE /photos/:id/like"/>
-                    <h3 className="text-lg font-bold">Parameters</h3>
-                    <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={unlikePhoto} />
-                    <h3 className="text-lg font-bold">Response</h3>
-                    <p className="text-sm py-2">Responds with a 204 status and an empty body.</p>
-                    <ResponseSection content={getRes} />
-                    <ResponseSection content={unlikeResExample} />
-                </section>
-            </div>
-        </main>
-    )
+  return (
+    <main className="flex flex-col min-h-screen mt-10 items-center justify-between mb-10">
+      <h1 className="text-2xl font-bold">Unsplash Photo Documentation</h1>
+      <p>This is the documenation </p>
+      <section className="my-4">
+      <h2 className="text-xl font-bold">The Endpoint</h2>
+        <p className="text-sm py-2 font-semibold mb-4">https://api.unsplash.com/</p>
+        <h2 className="text-xl font-bold">Link relations</h2>
+        <p className="text-sm py-2">Photos have the following link relations:</p>
+        <h3 className="text-lg font-bold">Parameters</h3>
+        <ResponseParams headerOne={"Relation"} headerTwo={"Description"} rows={linkRel} />
+
+        <h2 className="text-xl font-bold">List photos</h2>
+        <p className="text-sm py-2">Get a single page from the Editorial feed.</p>
+        <ResponseSection content="GET /photos" />
+        <h3 className="text-lg font-bold">Parameters</h3>
+        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={listPhotos} />
+        <h3 className="text-lg font-bold">Response</h3>
+        <p className="text-sm py-2">The photo objects returned here are abbreviated. For full details use GET /photos/:id</p>
+        <ResponseSection content={listRes} />
+        <ResponseSection content={listResExample} />
+      </section>
+      <section className="my-4">
+        <h2 className="text-xl font-bold">Get a photo</h2>
+        <p className="text-sm py-2">Retrieve a single photo.</p>
+        <ResponseSection content="GET /photos/:id" />
+        <h3 className="text-lg font-bold">Parameters</h3>
+        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getPhoto} />
+        <h3 className="text-lg font-bold">Response</h3>
+        <ResponseSection content={getRes} />
+        <ResponseSection content={getResExample} />
+      </section>
+      <section className="my-4">
+        <h2 className="text-xl font-bold">Get a random photo</h2>
+        <p className="text-sm py-2">Retrieve a single random photo, given optional filters.</p>
+        <ResponseSection content="GET /photos/random" />
+        <h3 className="text-lg font-bold">Parameters</h3>
+        <p className="text-sm py-2">All parameters are optional, and can be combined to narrow the pool of photos from which a random one will be chosen.</p>
+        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getRandomPhoto} />
+        <p className="text-sm py-2">Note: You can’t use the collections or topics filtering with query parameters in the same request</p>
+        <p className="text-sm py-2">Note: When supplying a count parameter - and only then - the response will be an array of photos, even if the value of count is 1.</p>
+        <h3 className="text-lg font-bold">Response</h3>
+        <ResponseSection content={getRes} />
+        <p className="text-sm py-2">Without the count parameter:</p>
+        <ResponseSection content={randomResExampleNoCount} />
+        <p className="text-sm py-2">With the count parameter:</p>
+        <ResponseSection content={randomResExampleCount} />
+      </section>
+      <section className="my-4">
+        <h2 className="text-xl font-bold">Get a photos statistics</h2>
+        <p className="text-sm py-2">Retrieve total number of downloads, views and likes of a single photo, as well as the historical breakdown of these stats in a specific timeframe (default is 30 days).</p>
+        <ResponseSection content="GET /photos/:id/statistics" />
+        <h3 className="text-lg font-bold">Parameters</h3>
+        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getPhotoStats} />
+        <p className="text-sm py-2">Currently, the only resolution param supported is “days”. The quantity param can be any number between 1 and 30.</p>
+        <h3 className="text-lg font-bold">Response</h3>
+        <ResponseSection content={getRes} />
+        <ResponseSection content={downloadResExample} />
+      </section>
+      <section className="my-4">
+        <h2 className="text-xl font-bold">Track a photo download</h2>
+        <p className="text-sm py-2">To abide by the API guidelines, you need to trigger a GET request to this endpoint every time your application performs a download of a photo. To understand what constitutes a download, please refer to the ‘Triggering a download’ guideline.</p>
+        <p className="text-sm py-2">This is purely an event endpoint used to increment the number of downloads a photo has. You can think of it very similarly to the pageview event in Google Analytics—where you’re incrementing a counter on the backend. This endpoint is not to be used to embed the photo (use the photo.urls.* properties instead) or to direct the user to the downloaded photo (use the photo.urls.full instead), it is for tracking purposes only.</p>
+        <p className="text-sm py-2">Note: This is different than the concept of a view, which is tracked automatically when you hotlink an image</p>
+        <ResponseSection content="GET /photos/:id/download" />
+        <h3 className="text-lg font-bold">Parameters</h3>
+        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={trackDownload} />
+        <h3 className="text-lg font-bold">Response</h3>
+        <ResponseSection content={getRes} />
+        <ResponseSection content={statsResExample} />
+      </section>
+      <section className="my-4">
+        <h2 className="text-xl font-bold">Update a photo</h2>
+        <p className="text-sm py-2">Update a photo on behalf of the logged-in user. This requires the write_photos scope.</p>
+        <ResponseSection content="PUT /photos/:id" />
+        <h3 className="text-lg font-bold">Parameters</h3>
+        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={updatePhoto} />
+        <h3 className="text-lg font-bold">Response</h3>
+        <p className="text-sm py-2">Responds with the uploaded photo:</p>
+        <ResponseSection content={updateRes} />
+        <ResponseSection content={updateResExample} />
+      </section>
+      <section className="my-4">
+        <h2 className="text-xl font-bold">Like a photo</h2>
+        <p className="text-sm py-2">Like a photo on behalf of the logged-in user. This requires the write_likes scope.</p>
+        <p className="text-sm py-2">Note: This action is idempotent; sending the POST request to a single photo multiple times has no additional effect.</p>
+        <ResponseSection content="POST /photos/:id/like" />
+        <h3 className="text-lg font-bold">Parameters</h3>
+        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={likePhoto} />
+        <h3 className="text-lg font-bold">Response</h3>
+        <p className="text-sm py-2">Responds with the abbreviated versions of the user and the liked photo.</p>
+        <ResponseSection content={updateRes} />
+        <ResponseSection content={likeResExample} />
+      </section>
+      <section className="my-4">
+        <h2 className="text-xl font-bold">Unlike a photo</h2>
+        <p className="text-sm py-2">Remove a user’s like of a photo.</p>
+        <p className="text-sm py-2">Note: This action is idempotent; sending the DELETE request to a single photo multiple times has no additional effect.</p>
+        <ResponseSection content="DELETE /photos/:id/like" />
+        <h3 className="text-lg font-bold">Parameters</h3>
+        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={unlikePhoto} />
+        <h3 className="text-lg font-bold">Response</h3>
+        <p className="text-sm py-2">Responds with a 204 status and an empty body.</p>
+        <ResponseSection content={getRes} />
+        <ResponseSection content={unlikeResExample} />
+      </section>
+    </main>
+  )
 }
