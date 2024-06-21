@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 // import React from 'react';
 // import { useQuery, gql, TypedDocumentNode } from '@apollo/client';
 // import { RickMortyDetails } from '@/types/rickmortyDetails';
