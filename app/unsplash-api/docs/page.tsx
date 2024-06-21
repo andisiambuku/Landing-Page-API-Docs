@@ -11,7 +11,7 @@ const linkRel = [
 const listPhotos = [
   { contentOne: 'page', contentTwo: 'Page number to retrieve. (Optional; default: 1)' },
   { contentOne: 'per_page', contentTwo: 'Number of items per page. (Optional; default: 10)' },
-  { contentOne: 'order_by', contentTwo: 'How to sort the photos. Optional. (Valid values; latest, oldest, popular; dafault: latest)' },
+  { contentOne: 'order_by', contentTwo: 'How to sort the photos. Optional. (Valid values; latest, oldest, popular; default: latest)' },
 ];
 
 const getPhoto = [
@@ -669,7 +669,7 @@ X-Ratelimit-Remaining: 999`
       <div className="flex flex-col items-center">
         <section className="my-4">
           <h2 className="text-xl font-bold">Getting started</h2>
-          <p className="text-sm py-2 max-w-prose leading-relaxed mb-6">This document describes the resources that make up the official Unsplash JSON API.</p>
+          <p className="text-sm py-2 max-w-prose leading-relaxed mb-6">This page describes the resources that make up the official Unsplash JSON API.</p>
 
           <h2 className="text-xl font-bold">Creating a developer account</h2>
           <p className="text-sm py-2 max-w-prose leading-relaxed mb-6">To access the Unsplash API, <Link href="https://unsplash.com/oauth/applications" className="underline first-line:underline-offset-4 ">first join</Link>.</p>

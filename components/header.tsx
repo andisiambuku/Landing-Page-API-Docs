@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/menubar";
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetClose } from "@/components/ui/sheet";
 import { Laptop } from "lucide-react"
+import Link from 'next/link';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +66,7 @@ export default function Header() {
       </div>
 
       <div className="relative hidden md:flex">
-        <Laptop className='absolute left-4 top-4' />
+      <Link href="/"><Laptop className='absolute left-4 top-4' /></Link>
         <Menubar className='absolute right-2'>
           <MenubarMenu>
             <MenubarTrigger>About</MenubarTrigger>
@@ -79,10 +80,14 @@ export default function Header() {
             <MenubarTrigger>Unsplash API</MenubarTrigger>
             <MenubarContent>
               <MenubarItem>
+                <Link href="/unsplash-api/docs">
                 Documentation
+                </Link>
               </MenubarItem>
               <MenubarItem>
+              <Link href="/unsplash-api/demo">
                 Demo
+                </Link>
               </MenubarItem>
             </MenubarContent>
           </MenubarMenu>
@@ -90,10 +95,14 @@ export default function Header() {
             <MenubarTrigger>Rick & Morty API</MenubarTrigger>
             <MenubarContent>
               <MenubarItem>
+              <Link href="/rick-morty-api/docs">
                 Documentation
+                </Link>
               </MenubarItem>
               <MenubarItem>
+              <Link href="/rick-morty-api/docs">
                 Demo
+                </Link>
               </MenubarItem>
             </MenubarContent>
           </MenubarMenu>
