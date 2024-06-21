@@ -2,7 +2,7 @@
 const accessKey: any = process.env.UNSPLASH_ACCESS_KEY;
 
 export async function getAllPhotos() {
-  const url = `https://api.unsplash.com/photos?client_id=${accessKey}`;
+  const url = `https://api.unsplash.com/photos?client_id=${accessKey}&per_page=24`;
   try {
     const res = await fetch(url,{
       method: "GET",
