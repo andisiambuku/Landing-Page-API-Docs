@@ -1,5 +1,6 @@
 import ResponseParams from "@/components/response-params";
 import ResponseSection from "@/components/response-section";
+import Link from "next/link"
 
 const linkRel = [
   { contentOne: 'self', contentTwo: 'API location of this photo' },
@@ -10,7 +11,7 @@ const linkRel = [
 const listPhotos = [
   { contentOne: 'page', contentTwo: 'Page number to retrieve. (Optional; default: 1)' },
   { contentOne: 'per_page', contentTwo: 'Number of items per page. (Optional; default: 10)' },
-  { contentOne: 'order_by', contentTwo: 'How to sort the photos. Optional. (Valid values; latest, oldest, popular; dafault: latest)' },
+  { contentOne: 'order_by', contentTwo: 'How to sort the photos. Optional. (Valid values; latest, oldest, popular; default: latest)' },
 ];
 
 const getPhoto = [
@@ -662,111 +663,139 @@ X-Ratelimit-Remaining: 999`
 }`
 
   return (
-    <main className="flex flex-col min-h-screen mt-10 items-center justify-between mb-10">
-      <h1 className="text-2xl font-bold">Unsplash Photo Documentation</h1>
-      <p>This is the documenation </p>
-      <section className="my-4">
-      <h2 className="text-xl font-bold">The Endpoint</h2>
-        <p className="text-sm py-2 font-semibold mb-4">https://api.unsplash.com/</p>
-        <h2 className="text-xl font-bold">Link relations</h2>
-        <p className="text-sm py-2">Photos have the following link relations:</p>
-        <h3 className="text-lg font-bold">Parameters</h3>
-        <ResponseParams headerOne={"Relation"} headerTwo={"Description"} rows={linkRel} />
+    <main className="flex flex-col min-h-screen mt-10 items-center justify-between mb-10 px-4 sm:px-6 lg:px-8">
+      <h1 className="text-4xl font-bold my-10">Unsplash Photo Documentation</h1>
+      <p className="text-sm mb-6">This is the documentation for the Unsplash REST API.  </p>
+      <div className="flex flex-col items-center">
+        <section className="my-4">
+          <h2 className="text-xl font-bold">Getting started</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed mb-6">This page describes the resources that make up the official Unsplash JSON API.</p>
 
-        <h2 className="text-xl font-bold">List photos</h2>
-        <p className="text-sm py-2">Get a single page from the Editorial feed.</p>
-        <ResponseSection content="GET /photos" />
-        <h3 className="text-lg font-bold">Parameters</h3>
-        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={listPhotos} />
-        <h3 className="text-lg font-bold">Response</h3>
-        <p className="text-sm py-2">The photo objects returned here are abbreviated. For full details use GET /photos/:id</p>
-        <ResponseSection content={listRes} />
-        <ResponseSection content={listResExample} />
-      </section>
-      <section className="my-4">
-        <h2 className="text-xl font-bold">Get a photo</h2>
-        <p className="text-sm py-2">Retrieve a single photo.</p>
-        <ResponseSection content="GET /photos/:id" />
-        <h3 className="text-lg font-bold">Parameters</h3>
-        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getPhoto} />
-        <h3 className="text-lg font-bold">Response</h3>
-        <ResponseSection content={getRes} />
-        <ResponseSection content={getResExample} />
-      </section>
-      <section className="my-4">
-        <h2 className="text-xl font-bold">Get a random photo</h2>
-        <p className="text-sm py-2">Retrieve a single random photo, given optional filters.</p>
-        <ResponseSection content="GET /photos/random" />
-        <h3 className="text-lg font-bold">Parameters</h3>
-        <p className="text-sm py-2">All parameters are optional, and can be combined to narrow the pool of photos from which a random one will be chosen.</p>
-        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getRandomPhoto} />
-        <p className="text-sm py-2">Note: You can’t use the collections or topics filtering with query parameters in the same request</p>
-        <p className="text-sm py-2">Note: When supplying a count parameter - and only then - the response will be an array of photos, even if the value of count is 1.</p>
-        <h3 className="text-lg font-bold">Response</h3>
-        <ResponseSection content={getRes} />
-        <p className="text-sm py-2">Without the count parameter:</p>
-        <ResponseSection content={randomResExampleNoCount} />
-        <p className="text-sm py-2">With the count parameter:</p>
-        <ResponseSection content={randomResExampleCount} />
-      </section>
-      <section className="my-4">
-        <h2 className="text-xl font-bold">Get a photos statistics</h2>
-        <p className="text-sm py-2">Retrieve total number of downloads, views and likes of a single photo, as well as the historical breakdown of these stats in a specific timeframe (default is 30 days).</p>
-        <ResponseSection content="GET /photos/:id/statistics" />
-        <h3 className="text-lg font-bold">Parameters</h3>
-        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getPhotoStats} />
-        <p className="text-sm py-2">Currently, the only resolution param supported is “days”. The quantity param can be any number between 1 and 30.</p>
-        <h3 className="text-lg font-bold">Response</h3>
-        <ResponseSection content={getRes} />
-        <ResponseSection content={downloadResExample} />
-      </section>
-      <section className="my-4">
-        <h2 className="text-xl font-bold">Track a photo download</h2>
-        <p className="text-sm py-2">To abide by the API guidelines, you need to trigger a GET request to this endpoint every time your application performs a download of a photo. To understand what constitutes a download, please refer to the ‘Triggering a download’ guideline.</p>
-        <p className="text-sm py-2">This is purely an event endpoint used to increment the number of downloads a photo has. You can think of it very similarly to the pageview event in Google Analytics—where you’re incrementing a counter on the backend. This endpoint is not to be used to embed the photo (use the photo.urls.* properties instead) or to direct the user to the downloaded photo (use the photo.urls.full instead), it is for tracking purposes only.</p>
-        <p className="text-sm py-2">Note: This is different than the concept of a view, which is tracked automatically when you hotlink an image</p>
-        <ResponseSection content="GET /photos/:id/download" />
-        <h3 className="text-lg font-bold">Parameters</h3>
-        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={trackDownload} />
-        <h3 className="text-lg font-bold">Response</h3>
-        <ResponseSection content={getRes} />
-        <ResponseSection content={statsResExample} />
-      </section>
-      <section className="my-4">
-        <h2 className="text-xl font-bold">Update a photo</h2>
-        <p className="text-sm py-2">Update a photo on behalf of the logged-in user. This requires the write_photos scope.</p>
-        <ResponseSection content="PUT /photos/:id" />
-        <h3 className="text-lg font-bold">Parameters</h3>
-        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={updatePhoto} />
-        <h3 className="text-lg font-bold">Response</h3>
-        <p className="text-sm py-2">Responds with the uploaded photo:</p>
-        <ResponseSection content={updateRes} />
-        <ResponseSection content={updateResExample} />
-      </section>
-      <section className="my-4">
-        <h2 className="text-xl font-bold">Like a photo</h2>
-        <p className="text-sm py-2">Like a photo on behalf of the logged-in user. This requires the write_likes scope.</p>
-        <p className="text-sm py-2">Note: This action is idempotent; sending the POST request to a single photo multiple times has no additional effect.</p>
-        <ResponseSection content="POST /photos/:id/like" />
-        <h3 className="text-lg font-bold">Parameters</h3>
-        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={likePhoto} />
-        <h3 className="text-lg font-bold">Response</h3>
-        <p className="text-sm py-2">Responds with the abbreviated versions of the user and the liked photo.</p>
-        <ResponseSection content={updateRes} />
-        <ResponseSection content={likeResExample} />
-      </section>
-      <section className="my-4">
-        <h2 className="text-xl font-bold">Unlike a photo</h2>
-        <p className="text-sm py-2">Remove a user’s like of a photo.</p>
-        <p className="text-sm py-2">Note: This action is idempotent; sending the DELETE request to a single photo multiple times has no additional effect.</p>
-        <ResponseSection content="DELETE /photos/:id/like" />
-        <h3 className="text-lg font-bold">Parameters</h3>
-        <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={unlikePhoto} />
-        <h3 className="text-lg font-bold">Response</h3>
-        <p className="text-sm py-2">Responds with a 204 status and an empty body.</p>
-        <ResponseSection content={getRes} />
-        <ResponseSection content={unlikeResExample} />
-      </section>
+          <h2 className="text-xl font-bold">Creating a developer account</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed mb-6">To access the Unsplash API, <Link href="https://unsplash.com/oauth/applications" className="underline first-line:underline-offset-4 ">first join</Link>.</p>
+
+          <h2 className="text-xl font-bold">Registering your application</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Once your account has been registered for the API, go to <Link href="https://unsplash.com/oauth/applications" className="underline underline-offset-4 ">your apps</Link>. Click “New Application”, and fill in the required details.</p>
+
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Initially, your application will be in demo mode and will be rate-limited to 50 requests per hour. This is perfect for demo apps, trying out the API, and for educational purposes.</p>
+
+          <p className="text-sm py-2 max-w-prose leading-relaxed">If ready to move to production mode, follow the ‘Apply for Production’ instructions. If approved, your rate limit will be increased to the full amount.</p>
+
+          <p className="text-sm py-2 max-w-prose leading-relaxed mb-6">All applications must follow the <Link href="https://help.unsplash.com/api-guidelines/unsplash-api-guidelines" className="underline underline-offset-4 ">API Guidelines</Link>, including <Link href="https://help.unsplash.com/api-guidelines/guideline-attribution" className="underline underline-offset-4 ">properly providing attribution for the photographer and Unsplash</Link>.</p>
+
+          <h2 className="text-xl font-bold">Guidelines & Crediting</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed mb-6">To use the API you must abide by the terms and follow the API guidelines.</p>
+        </section>
+        <h2 className="text-2xl font-bold my-10">Documentation</h2>
+
+        <section className="my-4">
+          <h2 className="text-xl font-bold">The Endpoint</h2>
+          <Link href="https://api.unsplash.com/" className="text-sm py-2 font-semibold mb-6 underline underline-offset-4 block">
+            https://api.unsplash.com/
+          </Link>
+          <h2 className="text-xl font-bold">Link relations</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Photos have the following link relations:</p>
+          <h3 className="text-lg font-bold">Parameters</h3>
+          <ResponseParams headerOne={"Relation"} headerTwo={"Description"} rows={linkRel} />
+
+          <h2 className="text-xl font-bold">List photos</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Get a single page from the Editorial feed.</p>
+          <ResponseSection content="GET /photos" />
+          <h3 className="text-lg font-bold">Parameters</h3>
+          <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={listPhotos} />
+          <h3 className="text-lg font-bold">Response</h3>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">The photo objects returned here are abbreviated. For full details use GET /photos/:id</p>
+          <ResponseSection content={listRes} />
+          <ResponseSection content={listResExample} />
+        </section>
+        <section className="my-4">
+          <h2 className="text-xl font-bold">Get a photo</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Retrieve a single photo.</p>
+          <ResponseSection content="GET /photos/:id" />
+          <h3 className="text-lg font-bold">Parameters</h3>
+          <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getPhoto} />
+          <h3 className="text-lg font-bold">Response</h3>
+          <ResponseSection content={getRes} />
+          <ResponseSection content={getResExample} />
+        </section>
+        <section className="my-4">
+          <h2 className="text-xl font-bold">Get a random photo</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Retrieve a single random photo, given optional filters.</p>
+          <ResponseSection content="GET /photos/random" />
+          <h3 className="text-lg font-bold">Parameters</h3>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">All parameters are optional, and can be combined to narrow the pool of photos from which a random one will be chosen.</p>
+          <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getRandomPhoto} />
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Note: You can’t use the collections or topics filtering with query parameters in the same request</p>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Note: When supplying a count parameter - and only then - the response will be an array of photos, even if the value of count is 1.</p>
+          <h3 className="text-lg font-bold">Response</h3>
+          <ResponseSection content={getRes} />
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Without the count parameter:</p>
+          <ResponseSection content={randomResExampleNoCount} />
+          <p className="text-sm py-2 max-w-prose leading-relaxed">With the count parameter:</p>
+          <ResponseSection content={randomResExampleCount} />
+        </section>
+
+        <section className="my-4">
+          <h2 className="text-xl font-bold">Get a photos statistics</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Retrieve total number of downloads, views and likes of a single photo, as well as the historical breakdown of these stats in a specific timeframe (default is 30 days).</p>
+          <ResponseSection content="GET /photos/:id/statistics" />
+          <h3 className="text-lg font-bold">Parameters</h3>
+          <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={getPhotoStats} />
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Currently, the only resolution param supported is “days”. The quantity param can be any number between 1 and 30.</p>
+          <h3 className="text-lg font-bold">Response</h3>
+          <ResponseSection content={getRes} />
+          <ResponseSection content={downloadResExample} />
+        </section>
+        <section className="my-4">
+          <h2 className="text-xl font-bold">Track a photo download</h2>
+
+          <p className="text-sm py-2 max-w-prose leading-relaxed">To abide by the API guidelines, you need to trigger a GET request to this endpoint every time your application performs a download of a photo. To understand what constitutes a download, please refer to the ‘Triggering a download’ guideline.</p>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">This is purely an event endpoint used to increment the number of downloads a photo has. You can think of it very similarly to the pageview event in Google Analytics—where you’re incrementing a counter on the backend. This endpoint is not to be used to embed the photo (use the photo.urls.* properties instead) or to direct the user to the downloaded photo (use the photo.urls.full instead), it is for tracking purposes only.</p>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Note: This is different than the concept of a view, which is tracked automatically when you hotlink an image</p>
+
+          <ResponseSection content="GET /photos/:id/download" />
+          <h3 className="text-lg font-bold">Parameters</h3>
+          <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={trackDownload} />
+          <h3 className="text-lg font-bold">Response</h3>
+          <ResponseSection content={getRes} />
+          <ResponseSection content={statsResExample} />
+        </section>
+        <section className="my-4">
+          <h2 className="text-xl font-bold">Update a photo</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Update a photo on behalf of the logged-in user. This requires the write_photos scope.</p>
+          <ResponseSection content="PUT /photos/:id" />
+          <h3 className="text-lg font-bold">Parameters</h3>
+          <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={updatePhoto} />
+          <h3 className="text-lg font-bold">Response</h3>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Responds with the uploaded photo:</p>
+          <ResponseSection content={updateRes} />
+          <ResponseSection content={updateResExample} />
+        </section>
+        <section className="my-4">
+          <h2 className="text-xl font-bold">Like a photo</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Like a photo on behalf of the logged-in user. This requires the write_likes scope.</p>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Note: This action is idempotent; sending the POST request to a single photo multiple times has no additional effect.</p>
+          <ResponseSection content="POST /photos/:id/like" />
+          <h3 className="text-lg font-bold">Parameters</h3>
+          <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={likePhoto} />
+          <h3 className="text-lg font-bold">Response</h3>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Responds with the abbreviated versions of the user and the liked photo.</p>
+          <ResponseSection content={updateRes} />
+          <ResponseSection content={likeResExample} />
+        </section>
+        <section className="my-4">
+          <h2 className="text-xl font-bold">Unlike a photo</h2>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Remove a user’s like of a photo.</p>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Note: This action is idempotent; sending the DELETE request to a single photo multiple times has no additional effect.</p>
+          <ResponseSection content="DELETE /photos/:id/like" />
+          <h3 className="text-lg font-bold">Parameters</h3>
+          <ResponseParams headerOne={"Parameter"} headerTwo={"Description"} rows={unlikePhoto} />
+          <h3 className="text-lg font-bold">Response</h3>
+          <p className="text-sm py-2 max-w-prose leading-relaxed">Responds with a 204 status and an empty body.</p>
+          <ResponseSection content={getRes} />
+          <ResponseSection content={unlikeResExample} />
+        </section>
+      </div>
     </main>
   )
 }

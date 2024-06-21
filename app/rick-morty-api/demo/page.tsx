@@ -1,5 +1,5 @@
-'use client'
-import RickMortyData from '@/lib/data/rick-morty-data';
+// 'use client'
+// import RickMortyData from '@/lib/data/rick-morty-data';
 
 
 export default function RickMortyDemo() {
@@ -9,7 +9,7 @@ export default function RickMortyDemo() {
             <h1 className="text-2xl font-bold mb-8">Rick & Morty Demo</h1>
             <div className="w-full">
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
-                    <RickMortyData/>
+                    Rick and Morty Page
                 </div>
             </div>
         </main>
